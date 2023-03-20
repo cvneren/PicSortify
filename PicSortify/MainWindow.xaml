@@ -1,0 +1,129 @@
+﻿<Window
+    x:Class="PicSortify.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PicSortify"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="360"
+    Height="300"
+    KeyDown="Window_KeyDown"
+    mc:Ignorable="d">
+    <Grid Background="#FF212121" OpacityMask="Black">
+        <DockPanel
+            Margin="0"
+            VerticalAlignment="Top"
+            Background="#FF3E3E3E"
+            LastChildFill="False">
+            <ToolBar Background="Transparent" DockPanel.Dock="Left">
+                <Label
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="Output folders"
+                    Foreground="#FFE2FFDD" />
+                <Button
+                    x:Name="addKey"
+                    Width="75"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Stretch"
+                    Background="#3F000000"
+                    Click="addKey_Click"
+                    Content="Add Key"
+                    Foreground="White" />
+            </ToolBar>
+            <ToolBar
+                HorizontalAlignment="Right"
+                Background="Transparent"
+                DockPanel.Dock="Right">
+                <Button
+                    x:Name="resetKeys"
+                    Width="75"
+                    Margin="0,0,20,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Stretch"
+                    Background="#3F000000"
+                    Click="resetKeys_Click"
+                    Content="Reset Keys"
+                    Foreground="White" />
+                <Label
+                    x:Name="keysCount"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    Content="0"
+                    Foreground="#FFC8C8C8" />
+            </ToolBar>
+        </DockPanel>
+        <Label
+            Width="111"
+            Margin="10,35,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Input Folder"
+            FontFamily="Open Sans"
+            FontSize="14"
+            Foreground="White" />
+        <Button
+            x:Name="selectInputFolder"
+            Width="111"
+            Margin="236,40,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="selectInputFolder_Click"
+            Content="Select Folder"
+            FontFamily="Open Sans"
+            FontSize="14"
+            RenderTransformOrigin="0.529,0.778" />
+        <Button
+            x:Name="startButton"
+            Height="59"
+            Margin="10,120,10,0"
+            VerticalAlignment="Top"
+            Click="startButton_Click"
+            Content="Start Sorting"
+            FontFamily="Open Sans"
+            FontSize="14" />
+        <TextBox
+            x:Name="inputFPath"
+            Height="24"
+            Margin="10,69,10,0"
+            VerticalAlignment="Top"
+            GotKeyboardFocus="inputFPath_Focus"
+            MouseDoubleClick="inputFPath_Focus"
+            PreviewMouseLeftButtonDown="inputFPath_PreviewMouseLeftButtonDown"
+            Text="Select an input folder..."
+            TextWrapping="Wrap" />
+        <Label
+            x:Name="imagesCountLabel"
+            Margin="0"
+            Padding="5,5,2,2"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            HorizontalContentAlignment="Right"
+            VerticalContentAlignment="Stretch"
+            Panel.ZIndex="1"
+            Background="#54000000"
+            Content="0 / 0"
+            Foreground="#FFC8C8C8" />
+        <Rectangle
+            x:Name="Overlay"
+            Margin="0,30,0,0"
+            Fill="#FF212121"
+            Stroke="Black"
+            Visibility="Hidden" />
+        <Image x:Name="ImageLoader" Margin="0,30,0,0" />
+        <TextBlock
+            x:Name="keysAssignedText"
+            Margin="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Background="#54000000"
+            Foreground="#FFC8C8C8"
+            Text="No keys assigned"
+            TextWrapping="Wrap" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,81 @@
+﻿<Window
+    x:Class="PicSortify.KeysWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PicSortify"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="KeysWindow"
+    Width="350"
+    Height="200"
+    mc:Ignorable="d">
+    <Grid Background="#FF212121">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label
+            x:Name="infoLabel"
+            Grid.ColumnSpan="2"
+            Height="26"
+            Margin="10,-240,9.667,384.667"
+            VerticalAlignment="Bottom"
+            Content="Errorcode 1012"
+            Foreground="White" />
+        <Button
+            x:Name="okButton"
+            Width="75"
+            Height="24"
+            Margin="0,0,0,17.667"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Click="okButton_Click"
+            Content="Ok" />
+        <Label
+            Width="162"
+            Height="26"
+            Margin="10,51,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Folder path:"
+            Foreground="White" />
+        <TextBox
+            x:Name="folderPathTextBox"
+            Width="323"
+            Height="23"
+            Margin="10,82,10,0"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap" />
+        <Button
+            x:Name="folderPathButton"
+            Width="156"
+            Height="21"
+            Margin="0,56,10.333,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="folderPathButton_Click"
+            Content="Select folder path"
+            RenderTransformOrigin="0.559,0.281" />
+        <Button
+            x:Name="assignButton"
+            Width="156"
+            Height="21"
+            Margin="0,15,10,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="assignButton_Click"
+            Content="Assign key"
+            KeyDown="assignButton_KeyDown"
+            LostFocus="assignButton_LostFocus" />
+        <Label
+            x:Name="buttonAssignedLabel"
+            Grid.ColumnSpan="2"
+            Width="156"
+            Height="26"
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="No button assigned"
+            Foreground="Red" />
+
+    </Grid>
+</Window>
