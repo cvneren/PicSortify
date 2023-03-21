@@ -21,7 +21,7 @@ namespace PicSortify
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
+    /// Todo add option to save keybinds
     public class Folder
     {
         public Key key;
@@ -133,13 +133,15 @@ namespace PicSortify
             //{
 
             //}
+            //Todo Add delete option
             if(assignedKeys.ContainsKey(e.Key))
             {
+                string filename = "";
                 try
                 {
                     stream.Close();
                     int pos = inputFiles.ElementAt(curCount).LastIndexOf("\\") + 1;
-                    string filename = inputFiles.ElementAt(curCount).Substring(pos, inputFiles.ElementAt(curCount).Length - pos);
+                    filename = inputFiles.ElementAt(curCount).Substring(pos, inputFiles.ElementAt(curCount).Length - pos);
                     File.Move(inputFiles.ElementAt(curCount), assignedKeys[e.Key]+ "\\" + filename);
                     curCount += 1;
 
@@ -165,7 +167,32 @@ namespace PicSortify
                 }
                 catch (ArgumentNullException)
                 {
-                    return;
+                    
+                }
+                catch(IOException)
+                {
+                    if (System.Windows.Forms.MessageBox.Show("File with that name already exists in destination directory. Do you want to overwrite it?", "Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes && filename != "")
+                    {
+                        File.Delete(assignedKeys[e.Key] + "\\" + filename);
+                        System.Windows.Forms.MessageBox.Show("Deleted");
+                        Window_KeyDown(sender, e);
+                    }
+                    else
+                    {
+                        curCount += 1;
+
+                        stream = File.Open(inputFiles.ElementAt(curCount), FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+                        BitmapImage curImage = new BitmapImage();
+                        curImage.BeginInit();
+                        curImage.StreamSource = stream;
+                        curImage.DecodePixelHeight = (int)ImageLoader.ActualHeight;
+                        curImage.EndInit();
+                        ImageLoader.Source = curImage;
+
+                        UpdateImageCount(curCount, imagesCount);
+                        lastkey = e.Key;
+                        return;
+                    }
                 }
             }
         }
